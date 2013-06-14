@@ -1,11 +1,18 @@
-post '/login' do
-  user = User.find_by_email(params[:email])
-  
-  if user.password == params[:password]
+
+get '/users/new' do
+  erb :sign_up
+end
+
+post '/users' do
+  user = User.new(params[:user])
+  if user.valid?
+    user.save
     session[:user_id] = user.id
     redirect '/'
   else
-    redirect '/'
+    redirect '/users/new'
   end
 end
+
+
 
