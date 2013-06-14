@@ -116,6 +116,16 @@ namespace :db do
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
   end
+
+  desc "Opens DB console in Postgres"
+  task :console do
+    system("psql #{DB_NAME}")
+  end
+
+  desc "Drop table, recreate, and migrate"
+  task :reload do
+    system("rake db:drop; rake db:create; rake db:migrate")
+  end
 end
 
 desc 'Start IRB with application environment loaded'
