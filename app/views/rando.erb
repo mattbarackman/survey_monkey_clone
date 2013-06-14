@@ -1,8 +1,32 @@
-<div class="question_box">
-  <form action="demo_form.asp" autocomplete="on">
-    First name:<input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    E-mail: <input type="email" name="email" autocomplete="off"><br>
-    <input type="submit">
-  </form>
+<div id="container">
+  <input type='button' value='Add Question' id='add_questions'> 
+  <div class="question_box">
+    <form>
+      <input type="text" placeholder:"Add Question..." name="question"><br>
+      <div class='response_box'>
+        <input type="text" placeholder:'Add a Response...' name='response'>
+      </div>
+      <input id="add_resp" type='button' value='+'> 
+    </form>
+    <input type="button" value="Delete Question" id="delete">
+  </div>
+</div>
+
+
+<!-- HTML TEMPLATES TO PULL FROM WITH JS -->
+<div class="question_html_templates" style="display:none;">
+  <div id="question_template">
+   <div class="question_box">
+    <form action="demo_form.asp">
+      <input type="text" placeholder:"Add Question..." name="question"><br>
+      <div class='response_box'>
+        <input type="text" placeholder:'Add a Response...' name='response'>
+      </div>
+      <input id="add_resp" type='button' value='+'> 
+    </form>
+  </div>
+</div>
+<div id="response_template">
+  <input type="text" placeholder:'Add a Response...' name='response'>
+</div>
 </div>
