@@ -121,6 +121,11 @@ namespace :db do
   task :console do
     system("psql #{DB_NAME}")
   end
+
+  desc "Drop table, recreate, and migrate"
+  task :reload do
+    system("rake db:drop; rake db:create; rake db:migrate")
+  end
 end
 
 desc 'Start IRB with application environment loaded'
