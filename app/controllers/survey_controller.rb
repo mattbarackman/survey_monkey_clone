@@ -7,8 +7,9 @@ get '/surveys/new' do
 end
 
 post '/surveys/new' do
-  # save survey to DB
-  # redirect to survey url
+  p params[:form]
+  survey = Survey.create(params[:form])
+  survey.id.to_s
 end
 
 get '/surveys/:id' do |id|
@@ -25,4 +26,8 @@ end
 
 get '/surveys/:id/results' do |id|
   #show survey results. duh.
+end
+
+post '/surveys/:id/questions/new' do |id|
+  Survey.find(id).questions << Question.create(params[:form])
 end
