@@ -12,6 +12,7 @@ post '/surveys/new' do
 end
 
 get '/surveys/:id' do |id|
+	@survey = Survey.find(id)
   erb :survey
 end
 
