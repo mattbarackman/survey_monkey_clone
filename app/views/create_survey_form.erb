@@ -8,8 +8,6 @@
     </div>
     <div class="question_list">
 
-      <!--  -->
-
     </div>
     <button class="add_question">Add question</button>
     <input id="save_survey" type="submit" value="Save">
@@ -23,14 +21,18 @@
    <div class="question_box">
     <form class="question_form">
       <input type="text" placeholder:"Add Question..." name="form[:question]"><br>
-      <div class='response_box'>
-        <input type="text" placeholder:'Add a Response...' name='form[:response]'>
-      </div>
+        <div id="response_box">
+          <input type="text" placeholder:'Add a Response...' name='response'>
+          <input type="text" placeholder:'Add a Response...' name='response'>
+        </div>
       <input id="add_resp" type='button' value='+'> 
     </form>
   </div>
 </div>
+
 <div id="response_template">
-  <input type="text" placeholder:'Add a Response...' name='response'>
+  <form class="response_form">
+    <input type="text" placeholder:'Add a Response...' name='response'>
+  </form>
 </div>
 </div>

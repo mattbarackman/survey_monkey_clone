@@ -1,9 +1,10 @@
+
 $(document).ready(function() {
 
   $('.add_question').on('click', function(e) {
     e.preventDefault();
     var template = $('#question_template').clone();
-
+    template.addClass('active');
     $('.question_list').append(template);
     $('.question_list #question_template').show();
   });
@@ -22,24 +23,36 @@ $(document).ready(function() {
   $('.new_survey').on('click', '#save_survey', function(e) {
     e.preventDefault();
 
-    $.ajax({
+      var survey_data = {};
+      var questions = [];
 
-      url: '/surveys/new',
-      method: 'POST',
-      data: $(this).closest('.new_survey').serialize()
-    }).done(function(response) {
-      var survey_id = response;
-      console.log(response);
-      for (var i = 1; i <= $('.question_box').length; i++) {
+      survey_data["title"] = $('.new_survey').find('input[name="form[name]"]')[0].value;
 
-        var form = $('.question_submit:nth-of-type(i)').closest('.question_form');
+      for (var i = 1; i <= $('.question_list .question_form').length; i++) {
 
-        $.ajax({
-          url: '/surveys/' + survey_id + '/questions/new',
-          method: 'POST',
-          data: form.serialize()
-        });
+        var question_form = $('#question_template.active:nth-of-type(' + i + ') .question_form');
+        var question_data = {};
+        var inputted_data = question_form.find('input[type="text"]');
+
+        question_data["question_text"] = inputted_data[0].value;
+        question_data["choices"] = [];
+
+        for (var j in inputted_data) {
+          if (j > 0) {
+            question_data["choices"].push(inputted_data[j].value);
+          }
+        }
+        questions.push(question_data);
       }
-    });
+
+      survey_data["questions"] = questions;
+
+      $.ajax({
+
+        url: '/surveys/new',
+        method: 'POST',
+        dataType: 'json',
+        data: survey_data
+      });
   });
 });
