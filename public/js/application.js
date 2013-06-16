@@ -24,4 +24,5 @@ $(document).ready(function() {
     console.log(addBox)
     $(this).parent().children().append(addBox);
   });
+
 });
