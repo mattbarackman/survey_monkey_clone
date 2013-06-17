@@ -52,3 +52,20 @@ nav li a:hover {
 .question_hidden_template {
   display: none;
 }
+
+.question_template {
+  margin: 20px 0;
+
+}
+
+.new_survey label {
+  display: block;
+}
+
+.new_survey button {
+  margin-top: 10px;
+}
+
+.new_survey input {
+  margin-top: 5px;
+}
