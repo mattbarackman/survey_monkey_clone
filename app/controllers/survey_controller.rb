@@ -20,6 +20,8 @@ post '/surveys/new' do
   end
   creator.surveys << survey
   creator.save
+
+  survey.id.to_s
 end
 
 

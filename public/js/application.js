@@ -55,6 +55,8 @@ $(document).ready(function() {
         method: 'POST',
         dataType: 'json',
         data: survey_data
+      }).done(function(survey_id){
+        window.location = "/surveys/" + survey_id;
       });
 
   });

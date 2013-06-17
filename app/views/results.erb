@@ -7,7 +7,7 @@
 			<h3> <%= question[:q_name] %> </h3>
 			<p> Total Responses: <%= question[:q_resp_count] %> </p>
 				<% question[:resp_results].each do |choice| %>
-				<p> <%= choice[:c_id] %> - <%= choice[:c_name] %> - Votes: <%= choice[:c_resp_count] %> - Percentage: <%= choice[:c_resp_count]/ question[:q_resp_count] %></p>
+				<p> <%= choice[:c_id] %> - <%= choice[:c_name] %> - Votes: <%= choice[:c_resp_count] %></p>
 				<% end %>
 		<% end %>
 	</div>

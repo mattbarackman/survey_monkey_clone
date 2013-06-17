@@ -11,8 +11,9 @@ helpers do
 									 				}
 			@results << { q_resp_count: i.responses.length,
 									  q_name: i.text,
-									  resp_results: choice_results,
-										q_percent: ((i.responses.length)/(j.responses.length)*100.0)}
+									  resp_results: choice_results
+										# q_percent: ((i.responses.length)/(j.responses.length)*100.0)
+									}
 	  	end
 	  end
 	end
