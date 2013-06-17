@@ -3,11 +3,13 @@ $(document).ready(function() {
 
   $('.add_question').on('click', function(e) {
     e.preventDefault();
-    var template = $('#question_template').clone();
-    template.addClass('active');
+    var template = $('.question_hidden_template').clone();
+    template.addClass('question_template');
+    template.removeClass('question_hidden_template');
     $('.question_list').append(template);
-    $('.question_list #question_template').show();
+    // $('.question_template').show();
   });
+
 
   $('a#sign-out').on("click", function(e) {
     e.preventDefault();
@@ -30,7 +32,7 @@ $(document).ready(function() {
 
       for (var i = 1; i <= $('.question_list .question_form').length; i++) {
 
-        var question_form = $('#question_template.active:nth-of-type(' + i + ') .question_form');
+        var question_form = $('.question_template:nth-of-type(' + i + ') .question_form');
         var question_data = {};
         var inputted_data = question_form.find('input[type="text"]');
 
@@ -54,5 +56,13 @@ $(document).ready(function() {
         dataType: 'json',
         data: survey_data
       });
+
+  });
+  $('.question_list').on('click', '#add_resp', function(e) {
+    e.preventDefault();
+    addBox = $('.response_hidden_template').clone();
+    addBox.addClass('response_template');
+    addBox.removeClass('response_hidden_template');
+    $(this).parent().children('#response_box').append(addBox);
   });
 });

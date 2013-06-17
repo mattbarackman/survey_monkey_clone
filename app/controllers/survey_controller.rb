@@ -8,6 +8,7 @@ end
 
 post '/surveys/new' do
 
+  p params
   creator = current_user
 
   survey = Survey.new(name: params[:title], user_id: creator.id)
@@ -21,15 +22,6 @@ post '/surveys/new' do
   creator.save
 end
 
-
-#   question = Question.create(survey_id: id, text: params[:question])
-#   choices_text = params[:responses]
-#   p choices_text
-#   choices_text.each do |choice|
-#     p choice
-#     question.choices << Choice.create(text: choice)
-#   end
-# end
 
 get '/surveys/:id' do |id|
   erb :survey

@@ -6,33 +6,28 @@
       <label for="name">Name</label>
       <input name="form[name]" placeholder="Enter a title for your survey...">
     </div>
+
     <div class="question_list">
 
     </div>
+
     <button class="add_question">Add question</button>
     <input id="save_survey" type="submit" value="Save">
   </form>
 
-
 </div>
 
-<div class="question_html_templates" style="display:none;">
-  <div id="question_template">
-   <div class="question_box">
-    <form class="question_form">
-      <input type="text" placeholder:"Add Question..." name="form[:question]"><br>
-        <div id="response_box">
-          <input type="text" placeholder:'Add a Response...' name='response'>
-          <input type="text" placeholder:'Add a Response...' name='response'>
-        </div>
-      <input id="add_resp" type='button' value='+'> 
-    </form>
+<div class="question_hidden_template">
+ <div class="question_box">
+  <form class="question_form">
+    <input type="text" placeholder:"Add Question..." name="form[:question]"><br>
+    <div id="response_box">
+      <input type="text" placeholder:'Add a Response...' name='response'>
+    </div>
+    <input id="add_resp" type='button' value='+'> 
   </div>
 </div>
 
-<div id="response_template">
-  <form class="response_form">
-    <input type="text" placeholder:'Add a Response...' name='response'>
-  </form>
-</div>
+<div class="response_hidden_template">
+  <input type="text" placeholder:'Add a Response...' name='response'></br>
 </div>
