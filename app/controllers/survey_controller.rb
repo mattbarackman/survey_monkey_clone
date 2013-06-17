@@ -23,6 +23,12 @@ delete '/survey/:id' do |id|
   # delete survey
 end
 
-get '/surveys/:id/results' do |id|
-  #show survey results. duh.
+get '/surveys/:id/results' do
+	p params
+  if authorized_for_results(params[:id])
+  	survey_result_objects
+	  erb :results
+	else
+		erb :sign_in
+	end
 end
