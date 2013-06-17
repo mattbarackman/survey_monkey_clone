@@ -1,3 +1,7 @@
 <div class="container">
-
+  <% if current_user %>
+    <a href="/surveys/new">Create a new survey!</a>
+  <% else %>
+    Login to create a survey!
+  <% end %>
 </div>

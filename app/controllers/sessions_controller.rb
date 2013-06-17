@@ -5,13 +5,12 @@ end
 
 post '/sessions' do
   user = User.find_by_email(params[:email])
-
-  if user.authenticate(params[:password])
+  if user && user.authenticate(params[:password])
     p "set user id in session"
     session[:user_id] = user.id
     redirect '/'
   else
-    redirect '/'
+    redirect '/sessions/new'
   end
 end
 
