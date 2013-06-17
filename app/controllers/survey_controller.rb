@@ -7,9 +7,21 @@ get '/surveys/new' do
 end
 
 post '/surveys/new' do
-  # save survey to DB
-  # redirect to survey url
+
+  p params
+  creator = current_user
+
+  survey = Survey.new(name: params[:title], user_id: creator.id)
+
+  questions = ParseQuestionData(params[:questions])
+
+  questions.each do |question|
+    survey.questions << question
+  end
+  creator.surveys << survey
+  creator.save
 end
+
 
 get '/surveys/:id' do |id|
 	@survey = Survey.find(id)
@@ -36,4 +48,8 @@ end
 
 get '/surveys/:id/results' do |id|
   #show survey results. duh.
+end
+
+post '/surveys/:id/questions/new' do |id|
+
 end
