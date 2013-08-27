@@ -8,7 +8,6 @@ end
 
 post '/surveys/new' do
 
-  p params
   creator = current_user
 
   survey = Survey.new(name: params[:title], user_id: creator.id)
@@ -30,15 +29,16 @@ get '/surveys/:id' do |id|
 	erb :survey
 end
 
-post '/surveys/:id' do 
+post '/surveys/:id' do |id|
  	params[:questions].each_pair do |k,v|
- 	choice= v.to_i
- 	question=k.to_i
+   	choice= v.to_i
+   	question=k.to_i
 
- 	# user = User.find(session[:user_id])
-	# 	
-	Response.create(:user_id => 1, :choice_id => choice, :question_id => question)
-	end
+   	# user = User.find(session[:user_id])
+  	# 	
+  	Response.create(:user_id => 1, :choice_id => choice, :question_id => question)
+  end
+  redirect "/surveys/#{id}/results"
 end
 
 	# user = User.find(session[:user_id])
@@ -48,14 +48,13 @@ delete '/survey/:id' do |id|
   # delete survey
 end
 
-get '/surveys/:id/results' do
-	p params
-  if authorized_for_results(params[:id])
-  	survey_result_objects
+get '/surveys/:id/results' do |id|
+  if authorized_for_results(id)
+    @survey = Survey.find(id)
 	  erb :results
 	else
 		erb :sign_in
-	end
+  end
 end
 
 post '/surveys/:id/questions/new' do |id|

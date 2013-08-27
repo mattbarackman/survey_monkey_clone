@@ -69,3 +69,13 @@ nav li a:hover {
 .new_survey input {
   margin-top: 5px;
 }
+
+.results_bar {
+  height: 20px;
+  background-color: green;
+}
+
+.results_bar_background {
+  height: 20px;
+  background-color: gray;
+}
